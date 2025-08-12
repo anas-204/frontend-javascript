@@ -1,6 +1,7 @@
 /// <reference path="./js/crud.d.ts" />
 import { RowID, RowElement } from './interface';
 import * as CRUD from './js/crud';
+export { Subjects };
 
 interface Teacher {
   readonly firstName: string;
@@ -133,3 +134,69 @@ const updatedRow: RowElement = { ...row, age: 23 };
 CRUD.updateRow(newRowID, updatedRow);
 CRUD.deleteRow(newRowID);
 
+// In task_4/js/subjects/index.ts
+
+/// <reference path="./Cpp.ts" />
+/// <reference path="./Java.ts" />
+/// <reference path="./React.ts" />
+
+namespace Subjects {
+    export const cpp = new Cpp();
+    export const java = new Java();
+    export const react = new React();
+
+    export const cTeacher: Teacher = {
+        firstName: "John",
+        lastName: "Doe",
+        experienceTeachingC: 10
+    };
+}
+
+console.log("C++");
+Subjects.cpp.setTeacher(Subjects.cTeacher);
+console.log(Subjects.cpp.getRequirements());
+console.log(Subjects.cpp.getAvailableTeacher());
+
+console.log("Java");
+java.setTeacher(cTeacher);
+console.log(java.getRequirements());
+console.log(java.getAvailableTeacher());
+
+console.log("React");
+Subjects.react.setTeacher(Subjects.cTeacher);
+console.log(Subjects.react.getRequirements());
+console.log(Subjects.react.getAvailableTeacher());
+
+
+
+interface MajorCredits {
+    credits: number;
+    _majorBrand: 'major';  
+}
+
+interface MinorCredits {
+    credits: number;
+    _minorBrand: 'minor';  
+}
+
+function sumMajorCredits(subject1: MajorCredits, subject2: MajorCredits): MajorCredits {
+    return {
+        credits: subject1.credits + subject2.credits,
+        _majorBrand: 'major'
+    };
+}
+
+function sumMinorCredits(subject1: MinorCredits, subject2: MinorCredits): MinorCredits {
+    return {
+        credits: subject1.credits + subject2.credits,
+        _minorBrand: 'minor'
+    };
+}
+
+const major1: MajorCredits = { credits: 3, _majorBrand: 'major' };
+const major2: MajorCredits = { credits: 4, _majorBrand: 'major' };
+console.log(sumMajorCredits(major1, major2));  
+
+const minor1: MinorCredits = { credits: 2, _minorBrand: 'minor' };
+const minor2: MinorCredits = { credits: 1, _minorBrand: 'minor' };
+console.log(sumMinorCredits(minor1, minor2));  
