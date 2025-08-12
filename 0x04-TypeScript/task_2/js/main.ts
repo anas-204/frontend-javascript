@@ -94,11 +94,11 @@ function createEmployee(salary: number | string): Director | Teacher {
   return new Director();
 }
 // Type predicate to check if employee is a Director
-function isDirector(employee: Director | Teacher): employee is Director {
+export function isDirector(employee: Director | Teacher): employee is Director {
   return (employee as Director).workDirectorTasks !== undefined;
 }
 
-export function executeWork(employee: Director | Teacher): string {
+function executeWork(employee: Director | Teacher): string {
   if (isDirector(employee)) {
     return employee.workDirectorTasks();
   } else {
