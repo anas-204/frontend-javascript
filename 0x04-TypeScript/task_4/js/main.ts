@@ -158,9 +158,9 @@ console.log(Subjects.cpp.getRequirements());
 console.log(Subjects.cpp.getAvailableTeacher());
 
 console.log("Java");
-Subjects.java.setTeacher(Subjects.cTeacher);
-console.log(Subjects.java.getRequirements());
-console.log(Subjects.java.getAvailableTeacher());
+java.setTeacher(cTeacher);
+console.log(java.getRequirements());
+console.log(java.getAvailableTeacher());
 
 console.log("React");
 Subjects.react.setTeacher(Subjects.cTeacher);
